@@ -23,6 +23,56 @@ const Topic = ({ match }) => (
   </div>
 )
 
+class Building extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      address:'',
+      buildingId: props.match.params.id
+    }
+  }
+
+  elementId () {
+    return this.props.match.params.id
+  }
+
+  getData (buildingId) {
+    var url = 'http://localhost:3001/buildings/' + buildingId + '.json'
+    fetch(url).then((response) => {
+      return response.json()
+    }).then((json) => {
+      this.architectId = json.architect_id
+      console.log(json)
+    })
+  }
+
+  prevId () {
+    var id = parseInt(this.elementId(), 10)
+    if (id > 1) {
+      id -= 1
+    }
+    return id
+  }
+
+  nextId () {
+    var id = parseInt(this.elementId(), 10) + 1
+    return id
+  }
+
+  render() {
+    this.getData(this.elementId())
+    return (
+      <div>
+      <p>id: {this.elementId()}</p>
+      <p>
+        <Link to={`/buildings/${this.prevId()}`}>Prev</Link> |&nbsp;
+        <Link to={`/buildings/${this.nextId()}`}>Next</Link>
+      </p>
+      </div>
+    )
+  }
+}
+
 const Topics = ({ match }) => (
   <div>
     <h2>Topics</h2>
@@ -42,6 +92,11 @@ const Topics = ({ match }) => (
           Props v. State
         </Link>
       </li>
+      <li>
+        <Link to={`${match.url}/buildings/2`}>
+          Building
+        </Link>
+      </li>
     </ul>
 
     <Route path={`${match.url}/:topicId`} component={Topic}/>
@@ -58,6 +113,7 @@ const BasicExample = () => (
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/topics">Topics</Link></li>
+        <li><Link to="/buildings/1">Building 1</Link></li>
       </ul>
 
       <hr/>
@@ -65,6 +121,7 @@ const BasicExample = () => (
       <Route exact path="/" component={Home}/>
       <Route path="/about" component={About}/>
       <Route path="/topics" component={Topics}/>
+      <Route path="/buildings/:id" component={Building}/>
     </div>
   </Router>
 )
