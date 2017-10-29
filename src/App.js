@@ -28,21 +28,37 @@ class Building extends React.Component {
     super(props)
     this.state = {
       address:'',
+      building: {
+        id: 0,
+        address: ''
+      },
       buildingId: props.match.params.id
     }
   }
 
   elementId () {
-    return this.props.match.params.id
+    return this.state.buildingId
   }
 
-  getData (buildingId) {
+  componentWillReceiveProps (nextProps) {
+    var newId = parseInt(nextProps.match.params.id, 10)
+    this.setState({
+      buildingId: newId
+    })
+    if (this.state.building.id !== nextProps.match.params.id) {
+      this.getBuilding(newId)
+    }
+  }
+
+  getBuilding (buildingId) {
     var url = 'http://localhost:3001/buildings/' + buildingId + '.json'
     fetch(url).then((response) => {
       return response.json()
     }).then((json) => {
-      this.architectId = json.architect_id
       console.log(json)
+      this.setState({
+        building: json
+      })
     })
   }
 
@@ -60,10 +76,10 @@ class Building extends React.Component {
   }
 
   render() {
-    this.getData(this.elementId())
     return (
       <div>
       <p>id: {this.elementId()}</p>
+      <p>address: {this.state.building.address1}</p>
       <p>
         <Link to={`/buildings/${this.prevId()}`}>Prev</Link> |&nbsp;
         <Link to={`/buildings/${this.nextId()}`}>Next</Link>
