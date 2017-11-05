@@ -48,9 +48,9 @@ class Architects extends React.Component {
           </div>
           <ul>
             {
-              this.state.architects.map(function(architect) {
-                return <li> <ArchitectLink architect={architect} /> </li>
-              })
+              this.state.architects.map(architect => (
+                <li><ArchitectLink architect={architect} /></li>
+              ))
             }
           </ul>
         </div>
