@@ -34,14 +34,22 @@ class Architects extends React.Component {
 
   render() {
     return (
+      <Router>
       <div>
-        <p>Hi!</p>
+        <div class='row'>
+          <div class='col building-title'>Sacramento Architects</div>
+        </div>
+        <ul>
         {
           this.state.architects.map(function(architect) {
-            return <li>{architect.name}</li>
+            return <li><Link to={`/architects/${architect.id}`}>
+                {architect.name}
+              </Link></li>
           })
         }
+        </ul>
       </div>
+    </Router>
     )
   }
 }
