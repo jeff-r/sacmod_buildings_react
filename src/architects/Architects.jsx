@@ -5,10 +5,17 @@ import {
   Link
 } from 'react-router-dom'
 
-const Architects = () => (
-  <div>
-    <p>Hi!</p>
-  </div>
-)
+class Architects extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    return (
+      <div>
+        <p>Hi!</p>
+      </div>
+    )
+  }
+}
 
 export default Architects
