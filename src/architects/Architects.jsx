@@ -5,6 +5,13 @@ import {
   Link
 } from 'react-router-dom'
 
+
+const ArchitectLink = (props) => (
+  <Link to={`/architects/${props.architect.id}`}>
+    {props.architect.name}
+  </Link>
+)
+
 class Architects extends React.Component {
   constructor(props) {
     super(props)
@@ -35,21 +42,19 @@ class Architects extends React.Component {
   render() {
     return (
       <Router>
-      <div>
-        <div class='row'>
-          <div class='col building-title'>Sacramento Architects</div>
+        <div>
+          <div class='row'>
+            <div class='col building-title'>Sacramento Architects</div>
+          </div>
+          <ul>
+            {
+              this.state.architects.map(function(architect) {
+                return <li> <ArchitectLink architect={architect} /> </li>
+              })
+            }
+          </ul>
         </div>
-        <ul>
-        {
-          this.state.architects.map(function(architect) {
-            return <li><Link to={`/architects/${architect.id}`}>
-                {architect.name}
-              </Link></li>
-          })
-        }
-        </ul>
-      </div>
-    </Router>
+      </Router>
     )
   }
 }
