@@ -1,5 +1,101 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
 }
+
+#notify_previous_version {
+	text-align: center;
+	background-color: red;
+}
+
+.prev-next {
+	margin-bottom: 1.5em;
+}
+
+.building-title {
+	color: #2799bf;
+	font-size: 1.5em;
+	font-family: sans-serif;
+	margin-bottom: 0.5em;
+}
+
+.building-architect {
+	color: #2799bf;
+	font-family: sans-serif;
+	margin-bottom: 2em;
+}
+
+.building-details {
+	border: 1px solid red;
+}
+
+.map {
+	pading: 0;
+	margin-bottom: 10px;
+}
+
+.map img {
+	margin-bottom: 10px;
+}
+
+.building-details .row {
+}
+
+.navbar {
+	background-color: rgb(234,93,0);
+	color: white;
+	width: auto;
+
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 16px;
+	line-height: 36px;
+	word-wrap: break-word;
+	margin-bottom: 20px;
+}
+
+.navbar a {
+	color: white;
+	margin-right: 20px;
+}
+
+.profile-links {
+	float: right;
+}
+
+.building-image {
+	margin-bottom: 10px;
+}
+
+.field.row {
+	margin-bottom: 10px;
+}
+
+.field.row input {
+	width: 500px;
+}
+
+.field.row input[type='checkbox'] {
+	width: 50px;
+}
+
+.field.row textarea {
+	width: 500px;
+}
+
+.half-size {
+	height: 50%;
+	width:  50%;
+}
+
+h1 {
+	color: #2799bf;
+	font-size: 2em;
+	font-family: serif;
+	margin-bottom: 20px;
+}
+
+.bottom-nav-links {
+	margin-top: 15px;
+}
+
