@@ -5,7 +5,7 @@ import {
   Link
 } from 'react-router-dom'
 import Architects from '../architects/Architects'
-import Architect from '../architect/Architect'
+import Architect  from '../architect/Architect'
 
 const Library = () => (
   <Router>

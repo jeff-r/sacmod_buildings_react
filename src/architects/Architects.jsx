@@ -2,6 +2,7 @@ import React from 'react'
 import {
   BrowserRouter as Router,
   Route,
+  Switch,
   Link
 } from 'react-router-dom'
 import Architect from '../architect/Architect'
@@ -50,20 +51,26 @@ class Architects extends React.Component {
     return (
       <Router>
         <div>
-          <Route path="/architects/:id" component={Architect}/>
+          <Switch>
+            <Route path="/architects/:id" component={Architect}/>
+            <Route path="/" render={() => (
+              <div>
+                <div className='row'>
+                  <div className='col building-title'>Sacramento Architects</div>
+                </div>
+                <ul>
+                  {
+                    this.state.architects.map(architect => (
+                      <li key={architect.id}><ArchitectLink architect={architect}/></li>
+                    ))
+                  }
+                </ul>
+              </div>
+            )
+            }/>
+        </Switch>
 
-          <div className='row'>
-            <div className='col building-title'>Sacramento Architects</div>
-          </div>
-          <ul>
-            {
-              this.state.architects.map(architect => (
-                <li key={architect.id}><ArchitectLink architect={architect}/></li>
-              ))
-            }
-          </ul>
 
-      { this.props.children }
         </div>
       </Router>
     )
