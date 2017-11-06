@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Architects from './architects/Architects';
+// import Architects from './architects/Architects';
+import Library from './library/Library';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<Architects />, document.getElementById('root'));
+
+ReactDOM.render(<Library />, document.getElementById('root'));
 registerServiceWorker();

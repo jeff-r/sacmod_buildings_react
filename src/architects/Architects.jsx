@@ -4,6 +4,7 @@ import {
   Route,
   Link
 } from 'react-router-dom'
+import Architect from '../architect/Architect'
 
 
 const ArchitectLink = (props) => (
@@ -20,7 +21,13 @@ class Architects extends React.Component {
     }
   }
 
+  shouldComponentUpdate () {
+    console.log('Architects#shouldComponentUpdate')
+    return (true);
+  }
+
   componentWillReceiveProps (nextProps) {
+    console.log('Architects#componentWillReceiveProps')
     this.getArchitects()
   }
 
@@ -43,16 +50,20 @@ class Architects extends React.Component {
     return (
       <Router>
         <div>
-          <div class='row'>
-            <div class='col building-title'>Sacramento Architects</div>
+          <Route path="/architects/:id" component={Architect}/>
+
+          <div className='row'>
+            <div className='col building-title'>Sacramento Architects</div>
           </div>
           <ul>
             {
               this.state.architects.map(architect => (
-                <li><ArchitectLink architect={architect} /></li>
+                <li key={architect.id}><ArchitectLink architect={architect}/></li>
               ))
             }
           </ul>
+
+      { this.props.children }
         </div>
       </Router>
     )
